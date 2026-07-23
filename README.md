@@ -15,4 +15,4 @@ A C-based hotel reservation and guest management system designed to digitize gue
 Originally created as my CAPE Computer Science Unit 1 IA and rebuilt to strengthen my C programming skills.
 
 ## Status
-🚧 Currently under development
+Currently under development
