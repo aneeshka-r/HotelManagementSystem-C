@@ -639,3 +639,90 @@ void searchReservation(void)
     }
 }
 
+// Deletes an existing guest reservation. A temporary file is used to rewrite the guest records without the deleted reservation.
+void deleteReservation(void)
+{
+    printf("\nDelete Reservation Option Selected.\n");
+
+    int reservationNumber;
+    int found = 0;
+
+    printf("Enter reservation number to delete: ");
+    scanf("%d", &reservationNumber);
+
+    FILE *file = fopen("GuestInformation.txt", "r");
+    FILE *tempFile = fopen("tempFile.txt", "w");
+
+    if (file == NULL || tempFile == NULL)
+    {
+        printf("Error opening files.\n");
+        return;
+    }
+
+    struct GuestInformation currentReservation;
+
+    while (fscanf(file,
+                  "%d %49s %74s %14s %149s %d %19s %19s %49s %d %d %19s %19s %24s %19s",
+                  &currentReservation.reservationNumber,
+                  currentReservation.name,
+                  currentReservation.email,
+                  currentReservation.phoneNumber,
+                  currentReservation.address,
+                  &currentReservation.durationOfStay,
+                  currentReservation.checkInDate,
+                  currentReservation.checkOutDate,
+                  currentReservation.roomType,
+                  &currentReservation.numberOfAdults,
+                  &currentReservation.numberOfChildren,
+                  currentReservation.roomNumber,
+                  currentReservation.paymentMethod,
+                  currentReservation.paymentInformation,
+                  currentReservation.paymentStatus) == 15)
+    {
+
+        // Copy all reservations except the one being deleted
+        if (currentReservation.reservationNumber != reservationNumber)
+        {
+            fprintf(tempFile,
+                    "%d %s %s %s %s %d %s %s %s %d %d %s %s %s %s\n",
+                    currentReservation.reservationNumber,
+                    currentReservation.name,
+                    currentReservation.email,
+                    currentReservation.phoneNumber,
+                    currentReservation.address,
+                    currentReservation.durationOfStay,
+                    currentReservation.checkInDate,
+                    currentReservation.checkOutDate,
+                    currentReservation.roomType,
+                    currentReservation.numberOfAdults,
+                    currentReservation.numberOfChildren,
+                    currentReservation.roomNumber,
+                    currentReservation.paymentMethod,
+                    currentReservation.paymentInformation,
+                    currentReservation.paymentStatus);
+        }
+        else
+        {
+            found = 1;
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+
+    remove("GuestInformation.txt");
+    rename("tempFile.txt", "GuestInformation.txt");
+
+    if (found)
+    {
+        printf("\nReservation deleted successfully.\n");
+    }
+    else
+    {
+        printf("\nReservation with number %d was not found.\n", reservationNumber);
+    }
+
+    // Reload guest data after deletion
+    readGuestData(guests, &numberOfGuests);
+}
+
