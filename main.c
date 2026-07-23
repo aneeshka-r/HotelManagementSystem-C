@@ -776,3 +776,58 @@ void guestCheckIn(void)
     printf("\nGuest checked in successfully.\n");
 }
 
+// Checks a guest out of the hotel. Records the checkout details and automatically saves the checkout date.
+void guestCheckOut(int durationOfStay)
+{
+    printf("\nGuest Check-Out Option Selected.\n");
+
+    char searchName[50];
+    char searchRoomNumber[20];
+    int searchReservationNumber;
+
+    printf("Enter guest name: ");
+    scanf("%49s", searchName);
+
+    printf("Enter room number: ");
+    scanf("%19s", searchRoomNumber);
+
+    printf("Enter guest's reservation number: ");
+    scanf("%d", &searchReservationNumber);
+
+    // Gets current date
+    time_t currentTime;
+    struct tm *localTime;
+
+    time(&currentTime);
+    localTime = localtime(&currentTime);
+
+    char checkOutDate[20];
+
+    strftime(checkOutDate,
+             sizeof(checkOutDate),
+             "%d/%m/%Y",
+             localTime);
+
+    // Opens checkout file
+    FILE *file = fopen("CheckOutInformation.txt", "a");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    // Writes checkout information
+    fprintf(file,
+            "Guest Name: %s, Room Number: %s, Reservation Number: %d, Check-out Date: %s, Duration of Stay: %d\n",
+            searchName,
+            searchRoomNumber,
+            searchReservationNumber,
+            checkOutDate,
+            durationOfStay);
+
+    fclose(file);
+
+    printf("\nGuest checked out successfully.\n");
+}
+
