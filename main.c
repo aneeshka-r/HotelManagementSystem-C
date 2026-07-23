@@ -209,3 +209,18 @@ void mainMenu(void)
         }
     }
 }
+
+// Displays the manage reservations menu options.
+void displayManageReservationsMenu(void)
+{
+    printf("\n|----------------------------------------------|\n");
+    printf("\n|          Manage Reservations Menu            |\n");
+    printf("\n|----------------------------------------------|\n");
+    printf("\n| 1. View Reservation                          |\n");
+    printf("\n| 2. Add Reservation                           |\n");
+    printf("\n| 3. Update Reservation                        |\n");
+    printf("\n| 4. Search Reservation                        |\n");
+    printf("\n| 5. Cancel Reservation                        |\n");
+    printf("\n| 6. Return to Main Menu                       |\n");
+    printf("\n|----------------------------------------------|\n");
+}
