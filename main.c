@@ -135,7 +135,14 @@ int validateLogin(struct Employee employees[], int numberOfEmployees, char *user
             return 1; // Login successful
         }
     }
-    
+
     return 0; // Login failed
 }
 
+// Displays the login screen for the hotel management system.
+void displayLoginScreen(void)
+{
+    printf("|----------------------------------------------|\n");
+    printf("|        Portal Hotel's Login Menu             |\n");
+    printf("|______________________________________________|\n");
+}
