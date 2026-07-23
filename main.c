@@ -322,3 +322,33 @@ void readGuestData(struct GuestInformation guests[], int *numberOfGuests)
 
     printf("Guest information read successfully.\n");
 }
+
+// Displays all guest reservations and information stored in the system.
+void viewReservations(void)
+{
+    printf("\nView Reservations Option Selected.\n");
+
+    // Update guest array with information from file
+    readGuestData(guests, &numberOfGuests);
+
+    printf("\nReservation Details:\n");
+
+    for (int i = 0; i < numberOfGuests; i++)
+    {
+        printf("Reservation Number: %d\n", guests[i].reservationNumber);
+        printf("Name: %s\n", guests[i].name);
+        printf("Email: %s\n", guests[i].email);
+        printf("Phone Number: %s\n", guests[i].phoneNumber);
+        printf("Address: %s\n", guests[i].address);
+        printf("Duration of Stay: %d\n", guests[i].durationOfStay);
+        printf("Check-in Date: %s\n", guests[i].checkInDate);
+        printf("Check-out Date: %s\n", guests[i].checkOutDate);
+        printf("Room Type: %s\n", guests[i].roomType);
+        printf("Number of Adults: %d\n", guests[i].numberOfAdults);
+        printf("Number of Children: %d\n", guests[i].numberOfChildren);
+        printf("Room Number: %s\n", guests[i].roomNumber);
+        printf("Payment Method: %s\n", guests[i].paymentMethod);
+        printf("Payment Information: %s\n", guests[i].paymentInformation);
+        printf("Payment Status: %s\n", guests[i].paymentStatus);
+    }
+}
