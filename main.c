@@ -105,7 +105,7 @@ struct Employee employees[] =
 };
 
 // Function Prototypes
-int validateLogin(void);
+int validateLogin(struct Employee employees[], int numberOfEmployees, char *username, char *password);
 void displayLoginScreen(void);
 void displayMainMenu(void);
 void mainMenu(void);
@@ -122,3 +122,20 @@ void guestCheckIn(void);
 void guestCheckOut(int durationOfStay);
 void viewOccupiedRooms(void);
 void returnToLoginScreen(void);
+
+/* Functions */
+// Validates the login credentials entered by the user against the list of employee usernames and passwords. (Returns: 1 - Login successful 0 - Login failed)
+int validateLogin(struct Employee employees[], int numberOfEmployees, char *username, char *password)
+{
+    for (int i = 0; i < numberOfEmployees; i++)
+    {
+        if (strcmp(username, employees[i].username) == 0 &&
+            strcmp(password, employees[i].password) == 0)
+        {
+            return 1; // Login successful
+        }
+    }
+    
+    return 0; // Login failed
+}
+
