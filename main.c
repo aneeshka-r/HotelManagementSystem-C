@@ -104,3 +104,21 @@ struct Employee employees[] =
     {"admin", "password1"}
 };
 
+// Function Prototypes
+int validateLogin(void);
+void displayLoginScreen(void);
+void displayMainMenu(void);
+void mainMenu(void);
+void displayManageReservationsMenu(void);
+void manageReservations(void);
+void readGuestData(struct GuestInformation guests[], int *numberOfGuests);
+void viewReservations(void);
+void addReservation(void);
+void updateReservation(void);
+void searchReservation(void);
+void deleteReservation(void);
+void returnToMenu(void);
+void guestCheckIn(void);
+void guestCheckOut(int durationOfStay);
+void viewOccupiedRooms(void);
+void returnToLoginScreen(void);
