@@ -331,6 +331,13 @@ void viewReservations(void)
     // Update guest array with information from file
     readGuestData(guests, &numberOfGuests);
 
+    // Check if there are no reservations stored
+    if (numberOfGuests == 0)
+    {
+        printf("\nNo reservations found.\n");
+        return;
+    }
+
     printf("\nReservation Details:\n");
 
     for (int i = 0; i < numberOfGuests; i++)
