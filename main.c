@@ -117,7 +117,6 @@ void addReservation(void);
 void updateReservation(void);
 void searchReservation(void);
 void deleteReservation(void);
-void returnToMenu(void);
 void guestCheckIn(void);
 void guestCheckOut(int durationOfStay);
 void viewOccupiedRooms(void);
@@ -260,8 +259,7 @@ void manageReservations(void)
                 break;
 
             case 6:
-                returnToMenu();
-                break;
+                return;
 
             default:
                 printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
