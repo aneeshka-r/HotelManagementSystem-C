@@ -831,3 +831,37 @@ void guestCheckOut(int durationOfStay)
     printf("\nGuest checked out successfully.\n");
 }
 
+// Displays all currently occupied hotel rooms. Reads check-in information from the CheckInInformation.txt file.
+void viewOccupiedRooms(void)
+{
+    printf("\nView Occupied Rooms Option Selected.\n");
+
+    FILE *file = fopen("CheckInInformation.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("\nNo occupied rooms found.\n");
+        return;
+    }
+
+    printf("\nOccupied Rooms:\n");
+    printf("------------------------------\n");
+
+    struct CheckInInformation checkIn;
+
+    while (fscanf(file,
+                  "%49s %19s %d %19s",
+                  checkIn.name,
+                  checkIn.roomNumber,
+                  &checkIn.reservationNumber,
+                  checkIn.checkInDate) == 4)
+    {
+        printf("Guest Name: %s\n", checkIn.name);
+        printf("Room Number: %s\n", checkIn.roomNumber);
+        printf("Reservation Number: %d\n", checkIn.reservationNumber);
+        printf("Check-in Date: %s\n\n", checkIn.checkInDate);
+    }
+
+    fclose(file);
+}
+
