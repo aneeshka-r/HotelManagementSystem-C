@@ -565,3 +565,77 @@ void updateReservation(void)
 
     printf("\nReservation updated successfully.\n");
 }
+
+// Searches for a guest reservation using the reservation number. Displays the reservation details if a matching record is found.
+void searchReservation(void)
+{
+    int reservationNumber;
+    int found = 0;
+
+    printf("\nEnter the reservation number you would like to search for: ");
+    scanf("%d", &reservationNumber);
+
+    // Open guest information file for reading
+    FILE *file = fopen("GuestInformation.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    struct GuestInformation currentReservation;
+
+    // Search through each reservation in the file
+    while (fscanf(file,
+                  "%d %49s %74s %14s %149s %d %19s %19s %49s %d %d %19s %19s %24s %19s",
+                  &currentReservation.reservationNumber,
+                  currentReservation.name,
+                  currentReservation.email,
+                  currentReservation.phoneNumber,
+                  currentReservation.address,
+                  &currentReservation.durationOfStay,
+                  currentReservation.checkInDate,
+                  currentReservation.checkOutDate,
+                  currentReservation.roomType,
+                  &currentReservation.numberOfAdults,
+                  &currentReservation.numberOfChildren,
+                  currentReservation.roomNumber,
+                  currentReservation.paymentMethod,
+                  currentReservation.paymentInformation,
+                  currentReservation.paymentStatus) == 15)
+    {
+        if (currentReservation.reservationNumber == reservationNumber)
+        {
+            found = 1;
+
+            printf("\nReservation Found:\n");
+            printf("------------------------------\n");
+            printf("Reservation Number: %d\n", currentReservation.reservationNumber);
+            printf("Name: %s\n", currentReservation.name);
+            printf("Email: %s\n", currentReservation.email);
+            printf("Phone Number: %s\n", currentReservation.phoneNumber);
+            printf("Address: %s\n", currentReservation.address);
+            printf("Duration of Stay: %d\n", currentReservation.durationOfStay);
+            printf("Check-in Date: %s\n", currentReservation.checkInDate);
+            printf("Check-out Date: %s\n", currentReservation.checkOutDate);
+            printf("Room Type: %s\n", currentReservation.roomType);
+            printf("Number of Adults: %d\n", currentReservation.numberOfAdults);
+            printf("Number of Children: %d\n", currentReservation.numberOfChildren);
+            printf("Room Number: %s\n", currentReservation.roomNumber);
+            printf("Payment Method: %s\n", currentReservation.paymentMethod);
+            printf("Payment Information: %s\n", currentReservation.paymentInformation);
+            printf("Payment Status: %s\n", currentReservation.paymentStatus);
+
+            break;
+        }
+    }
+
+    fclose(file);
+
+    if (!found)
+    {
+        printf("\nReservation not found.\n");
+    }
+}
+
