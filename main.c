@@ -275,3 +275,50 @@ void manageReservations(void)
 
     } while (1);
 }
+
+// Reads guest information from the GuestInformation.txt file and stores the records in the guest array.
+void readGuestData(struct GuestInformation guests[], int *numberOfGuests)
+{
+    int count = 0;
+
+    FILE *file = fopen("GuestInformation.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    while (fscanf(file,
+                  "%d %49s %74s %14s %149s %d %19s %19s %49s %d %d %19s %19s %24s %19s",
+                  &guests[count].reservationNumber,
+                  guests[count].name,
+                  guests[count].email,
+                  guests[count].phoneNumber,
+                  guests[count].address,
+                  &guests[count].durationOfStay,
+                  guests[count].checkInDate,
+                  guests[count].checkOutDate,
+                  guests[count].roomType,
+                  &guests[count].numberOfAdults,
+                  &guests[count].numberOfChildren,
+                  guests[count].roomNumber,
+                  guests[count].paymentMethod,
+                  guests[count].paymentInformation,
+                  guests[count].paymentStatus) == 15)
+    {
+        count++;
+
+        if (count >= MAX_NUMBER_OF_GUESTS)
+        {
+            printf("Maximum number of guests reached.\n");
+            break;
+        }
+    }
+
+    *numberOfGuests = count;
+
+    fclose(file);
+
+    printf("Guest information read successfully.\n");
+}
