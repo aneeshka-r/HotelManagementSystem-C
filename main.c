@@ -359,3 +359,95 @@ void viewReservations(void)
         printf("Payment Status: %s\n", guests[i].paymentStatus);
     }
 }
+
+// Allows the user to add a new guest reservation and the reservation details are saved to the GuestInformation.txt file.
+void addReservation(void)
+{
+    printf("\nAdd Reservation Option Selected.\n");
+
+    // Creates a temporary guest record to store the new reservation
+    struct GuestInformation newReservation;
+
+    printf("\nEnter reservation details without spaces.\n");
+    printf("Example: FirstnameLastname\n\n");
+
+    printf("Reservation Number: ");
+    scanf("%d", &newReservation.reservationNumber);
+
+    printf("Name: ");
+    scanf("%49s", newReservation.name);
+
+    printf("Email: ");
+    scanf("%74s", newReservation.email);
+
+    printf("Phone Number: ");
+    scanf("%14s", newReservation.phoneNumber);
+
+    printf("Address: ");
+    scanf("%149s", newReservation.address);
+
+    printf("Duration of Stay: ");
+    scanf("%d", &newReservation.durationOfStay);
+
+    printf("Check-in Date (DD/MM/YYYY): ");
+    scanf("%19s", newReservation.checkInDate);
+
+    printf("Check-out Date (DD/MM/YYYY): ");
+    scanf("%19s", newReservation.checkOutDate);
+
+    printf("Room Type: ");
+    scanf("%49s", newReservation.roomType);
+
+    printf("Number of Adults: ");
+    scanf("%d", &newReservation.numberOfAdults);
+
+    printf("Number of Children: ");
+    scanf("%d", &newReservation.numberOfChildren);
+
+    printf("Room Number: ");
+    scanf("%19s", newReservation.roomNumber);
+
+    printf("Payment Method: ");
+    scanf("%19s", newReservation.paymentMethod);
+
+    printf("Payment Information: ");
+    scanf("%24s", newReservation.paymentInformation);
+
+    printf("Payment Status: ");
+    scanf("%19s", newReservation.paymentStatus);
+
+    // Opens file in append mode to add the new reservation
+    FILE *file = fopen("GuestInformation.txt", "a");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    // Writes the new reservation details to the file
+    fprintf(file,
+            "%d %s %s %s %s %d %s %s %s %d %d %s %s %s %s\n",
+            newReservation.reservationNumber,
+            newReservation.name,
+            newReservation.email,
+            newReservation.phoneNumber,
+            newReservation.address,
+            newReservation.durationOfStay,
+            newReservation.checkInDate,
+            newReservation.checkOutDate,
+            newReservation.roomType,
+            newReservation.numberOfAdults,
+            newReservation.numberOfChildren,
+            newReservation.roomNumber,
+            newReservation.paymentMethod,
+            newReservation.paymentInformation,
+            newReservation.paymentStatus);
+
+    fclose(file);
+
+    printf("\nReservation added successfully.\n");
+
+    // Reload guest data so the program has the updated information
+    readGuestData(guests, &numberOfGuests);
+}
