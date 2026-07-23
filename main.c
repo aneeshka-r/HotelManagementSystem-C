@@ -146,3 +146,18 @@ void displayLoginScreen(void)
     printf("|        Portal Hotel's Login Menu             |\n");
     printf("|______________________________________________|\n");
 }
+
+// Displays the main menu options for the hotel management system.
+void displayMainMenu(void)
+{
+    printf("\n|----------------------------------------------|\n");
+    printf("\n|              Hotel's Main Menu               |\n");
+    printf("\n|----------------------------------------------|\n");
+    printf("\n| 1. Manage Reservations                       |\n");
+    printf("\n| 2. Guest Check-In                            |\n");
+    printf("\n| 3. Guest Check-Out                           |\n");
+    printf("\n| 4. View Occupied Rooms                       |\n");
+    printf("\n| 5. Return to Login Screen                    |\n");
+    printf("\n| 6. Exit                                      |\n");
+    printf("\n|----------------------------------------------|\n");
+}
