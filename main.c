@@ -887,3 +887,90 @@ void exitProgram(void)
     exit(0);
 }
 
+int main(void)
+{
+    int menuOption;
+    int durationOfStay;
+
+    while (1)
+    {
+        // Login loop
+        while (!loggedIn)
+        {
+            displayLoginScreen();
+            printf("Enter your username: ");
+            scanf("%19s", username);
+
+            printf("Enter your password: ");
+            scanf("%19s", password);
+
+            loggedIn = validateLogin(employees,
+                                     numberOfEmployees,
+                                     username,
+                                     password);
+
+            if (loggedIn)
+            {
+                printf("\nLogin successful!\n");
+                loginAttempts = 0;
+            }
+            else
+            {
+                loginAttempts++;
+
+                if (loginAttempts >= maxLoginAttempts)
+                {
+                    printf("\nMaximum login attempts reached. Exiting program.\n");
+                    return 1;
+                }
+
+                printf("\nInvalid username or password. Please try again.\n");
+            }
+        }
+
+        // Main menu loop
+        while (loggedIn)
+        {
+            displayMainMenu();
+
+            printf("\nEnter Menu Option: ");
+            scanf("%d", &menuOption);
+
+            switch(menuOption)
+            {
+                case 1:
+                    manageReservations();
+                    break;
+
+                case 2:
+                    guestCheckIn();
+                    break;
+
+                case 3:
+                    printf("Enter duration of stay (days): ");
+                    scanf("%d", &durationOfStay);
+
+                    guestCheckOut(durationOfStay);
+                    break;
+
+                case 4:
+                    viewOccupiedRooms();
+                    break;
+
+                case 5:
+                    returnToLoginScreen();
+                    break;
+
+                case 6:
+                    exitProgram();
+                    break;
+
+                default:
+                    printf("\nInvalid menu option. Please try again.\n");
+            }
+        }
+    }
+
+    return 0;
+}
+
