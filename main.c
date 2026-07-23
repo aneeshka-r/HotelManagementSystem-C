@@ -724,3 +724,55 @@ void deleteReservation(void)
     readGuestData(guests, &numberOfGuests);
 }
 
+// Checks a guest into the hotel. Stores check-in details and automatically records the current date.
+void guestCheckIn(void)
+{
+    printf("\nGuest Check-In Option Selected.\n");
+
+    char searchName[50];
+    char searchRoomNumber[20];
+    int searchReservationNumber;
+
+    printf("Enter guest name: ");
+    scanf("%49s", searchName);
+
+    printf("Enter room number: ");
+    scanf("%19s", searchRoomNumber);
+
+    printf("Enter reservation number: ");
+    scanf("%d", &searchReservationNumber);
+
+    // Gets current date
+    time_t currentTime;
+    struct tm *localTime;
+
+    time(&currentTime);
+    localTime = localtime(&currentTime);
+
+    char checkInDate[20];
+
+    strftime(checkInDate,
+             sizeof(checkInDate),
+             "%d/%m/%Y",
+             localTime);
+
+    FILE *file = fopen("CheckInInformation.txt", "a");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    fprintf(file,
+            "Guest Name: %s, Room Number: %s, Reservation Number: %d, Check-in Date: %s\n",
+            searchName,
+            searchRoomNumber,
+            searchReservationNumber,
+            checkInDate);
+
+    fclose(file);
+
+    printf("\nGuest checked in successfully.\n");
+}
+
