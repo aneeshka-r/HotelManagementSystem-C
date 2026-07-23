@@ -161,3 +161,51 @@ void displayMainMenu(void)
     printf("\n| 6. Exit                                      |\n");
     printf("\n|----------------------------------------------|\n");
 }
+
+// Displays the main menu and handles user selections.
+void mainMenu(void)
+{
+    int menuOption;
+    int durationOfStay;
+
+    while (1)
+    {
+        displayMainMenu();
+
+        printf("\nEnter Menu Option: ");
+        scanf("%d", &menuOption);
+
+        switch (menuOption)
+        {
+            case 1:
+                manageReservations();
+                break;
+
+            case 2:
+                guestCheckIn();
+                break;
+
+            case 3:
+                printf("Enter the duration of stay (in days): ");
+                scanf("%d", &durationOfStay);
+
+                guestCheckOut(durationOfStay);
+                break;
+
+            case 4:
+                viewOccupiedRooms();
+                break;
+
+            case 5:
+                returnToLoginScreen();
+                break;
+
+            case 6:
+                printf("\nExiting Hotel Management System...\n");
+                exit(0);
+
+            default:
+                printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
+        }
+    }
+}
