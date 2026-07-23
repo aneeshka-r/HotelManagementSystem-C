@@ -865,3 +865,16 @@ void viewOccupiedRooms(void)
     fclose(file);
 }
 
+// Returns the user to the login screen by logging them out and clearing the stored login information. 
+void returnToLoginScreen(void)
+{
+    printf("\nReturning to Login Screen...\n");
+
+    // Reset login status
+    loggedIn = 0;
+
+    // Clear username and password
+    username[0] = '\0';
+    password[0] = '\0';
+}
+
