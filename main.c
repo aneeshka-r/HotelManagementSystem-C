@@ -224,3 +224,54 @@ void displayManageReservationsMenu(void)
     printf("\n| 6. Return to Main Menu                       |\n");
     printf("\n|----------------------------------------------|\n");
 }
+
+// Displays and manages the reservation menu options.
+void manageReservations(void)
+{
+    int submenuOption;
+
+    do
+    {
+        displayManageReservationsMenu();
+
+        printf("\nEnter Menu Option: ");
+        scanf("%d", &submenuOption);
+
+        switch (submenuOption)
+        {
+            case 1:
+                viewReservations();
+                break;
+
+            case 2:
+                addReservation();
+                break;
+
+            case 3:
+                updateReservation();
+                break;
+
+            case 4:
+                searchReservation();
+                break;
+
+            case 5:
+                deleteReservation();
+                break;
+
+            case 6:
+                returnToMenu();
+                break;
+
+            default:
+                printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
+        }
+
+        if (returnToMainMenu)
+        {
+            returnToMainMenu = 0;
+            break;
+        }
+
+    } while (1);
+}
