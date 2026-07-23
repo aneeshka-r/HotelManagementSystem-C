@@ -121,6 +121,7 @@ void guestCheckIn(void);
 void guestCheckOut(int durationOfStay);
 void viewOccupiedRooms(void);
 void returnToLoginScreen(void);
+void exitProgram(void);
 
 /* Functions */
 // Validates the login credentials entered by the user against the list of employee usernames and passwords. (Returns: 1 - Login successful 0 - Login failed)
@@ -200,8 +201,8 @@ void mainMenu(void)
                 break;
 
             case 6:
-                printf("\nExiting Hotel Management System...\n");
-                exit(0);
+                exitProgram();
+                break;
 
             default:
                 printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
@@ -876,5 +877,13 @@ void returnToLoginScreen(void)
     // Clear username and password
     username[0] = '\0';
     password[0] = '\0';
+}
+
+// Ends the hotel management system. Displays an exit message before closing the program.
+void exitProgram(void)
+{
+    printf("\nExiting Hotel Management System...\n");
+
+    exit(0);
 }
 
