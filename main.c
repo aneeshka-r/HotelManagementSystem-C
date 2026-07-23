@@ -451,3 +451,117 @@ void addReservation(void)
     // Reload guest data so the program has the updated information
     readGuestData(guests, &numberOfGuests);
 }
+
+//Updates an existing guest reservation. Searches for a reservation number, changes the information, and saves the updated records back to the file.
+void updateReservation(void)
+{
+    printf("\nUpdate Reservation Option Selected.\n");
+
+    // Load current guest records
+    readGuestData(guests, &numberOfGuests);
+
+    int reservationNumber;
+    int found = 0;
+
+    printf("Enter reservation number to update: ");
+    scanf("%d", &reservationNumber);
+
+    // Search for reservation
+    for (int i = 0; i < numberOfGuests; i++)
+    {
+        if (guests[i].reservationNumber == reservationNumber)
+        {
+            found = 1;
+
+            printf("\nEnter new reservation details without spaces.\n");
+
+
+            printf("Reservation Number: ");
+            scanf("%d", &guests[i].reservationNumber);
+
+            printf("Name: ");
+            scanf("%49s", guests[i].name);
+
+            printf("Email: ");
+            scanf("%74s", guests[i].email);
+
+            printf("Phone Number: ");
+            scanf("%14s", guests[i].phoneNumber);
+
+            printf("Address: ");
+            scanf("%149s", guests[i].address);
+
+            printf("Duration of Stay: ");
+            scanf("%d", &guests[i].durationOfStay);
+
+            printf("Check-in Date: ");
+            scanf("%19s", guests[i].checkInDate);
+
+            printf("Check-out Date: ");
+            scanf("%19s", guests[i].checkOutDate);
+
+            printf("Room Type: ");
+            scanf("%49s", guests[i].roomType);
+
+            printf("Number of Adults: ");
+            scanf("%d", &guests[i].numberOfAdults);
+
+            printf("Number of Children: ");
+            scanf("%d", &guests[i].numberOfChildren);
+
+            printf("Room Number: ");
+            scanf("%19s", guests[i].roomNumber);
+
+            printf("Payment Method: ");
+            scanf("%19s", guests[i].paymentMethod);
+
+            printf("Payment Information: ");
+            scanf("%24s", guests[i].paymentInformation);
+
+            printf("Payment Status: ");
+            scanf("%19s", guests[i].paymentStatus);
+
+            break;
+        }
+    }
+
+    if (!found)
+    {
+        printf("\nReservation not found.\n");
+        return;
+    }
+
+    // Rewrite the file with updated information
+    FILE *file = fopen("GuestInformation.txt", "w");
+
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    for (int i = 0; i < numberOfGuests; i++)
+    {
+        fprintf(file,
+                "%d %s %s %s %s %d %s %s %s %d %d %s %s %s %s\n",
+                guests[i].reservationNumber,
+                guests[i].name,
+                guests[i].email,
+                guests[i].phoneNumber,
+                guests[i].address,
+                guests[i].durationOfStay,
+                guests[i].checkInDate,
+                guests[i].checkOutDate,
+                guests[i].roomType,
+                guests[i].numberOfAdults,
+                guests[i].numberOfChildren,
+                guests[i].roomNumber,
+                guests[i].paymentMethod,
+                guests[i].paymentInformation,
+                guests[i].paymentStatus);
+    }
+
+    fclose(file);
+
+    printf("\nReservation updated successfully.\n");
+}
