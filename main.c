@@ -7,10 +7,11 @@
     and hotel records.
 
     Features:
-    - Employee login authentication
-    - Add, view, update, delete, and search reservations
-    - Manage guest information
-    - Store and retrieve guest records using files
+    -Employee login authentication
+    -Add, view, update, delete, and search reservations
+    -Guest check-in and check-out tracking
+    -View currently occupied rooms
+    -Store and retrieve guest records using files
 
     Language:
     C Programming Language
@@ -41,7 +42,6 @@ int numberOfEmployees = 0;              // Number of employees stored
 int maxLoginAttempts = 3;            // Maximum login attempts allowed
 int loginAttempts = 0;               // Current login attempts
 int loggedIn = 0;                     // Login status (1 = logged in, 0 = logged out)
-int returnToMainMenu = 0;             // Controls returning to the main menu
 
 char username[20];                    // Stores entered username
 char password[20];                    // Stores entered password
@@ -220,7 +220,6 @@ void manageReservations(void)
 
     } while (1);
 }
-
 
 // Displays the main menu and handles user selections.
 void mainMenu(void)
