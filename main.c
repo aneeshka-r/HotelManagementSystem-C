@@ -122,8 +122,9 @@ void viewOccupiedRooms(void);
 void returnToLoginScreen(void);
 void exitProgram(void);
 
-/* Functions */
-// Validates the login credentials entered by the user against the list of employee usernames and passwords. (Returns: 1 - Login successful 0 - Login failed)
+// Functions
+// Validates the login credentials entered by the user against the employee list.
+// Returns 1 if login is successful and 0 if login fails.
 int validateLogin(struct Employee employees[], int numberOfEmployees, char *username, char *password)
 {
     for (int i = 0; i < numberOfEmployees; i++)
@@ -131,22 +132,22 @@ int validateLogin(struct Employee employees[], int numberOfEmployees, char *user
         if (strcmp(username, employees[i].username) == 0 &&
             strcmp(password, employees[i].password) == 0)
         {
-            return 1; // Login successful
+            return 1;
         }
     }
 
-    return 0; // Login failed
+    return 0;
 }
 
-// Displays the login screen for the hotel management system.
+// Displays the login screen
 void displayLoginScreen(void)
 {
-    printf("|----------------------------------------------|\n");
-    printf("|        Portal Hotel's Login Menu             |\n");
-    printf("|______________________________________________|\n");
+    printf("\n|----------------------------------------------|\n");
+    printf("\n|          Portal Hotel Login Menu             |\n");
+    printf("\n|______________________________________________|\n");
 }
 
-// Displays the main menu options for the hotel management system.
+// Displays the main menu options
 void displayMainMenu(void)
 {
     printf("\n|----------------------------------------------|\n");
@@ -160,6 +161,66 @@ void displayMainMenu(void)
     printf("\n| 6. Exit                                      |\n");
     printf("\n|----------------------------------------------|\n");
 }
+
+// Displays the manage reservations menu
+void displayManageReservationsMenu(void)
+{
+    printf("\n|----------------------------------------------|\n");
+    printf("\n|          Manage Reservations Menu            |\n");
+    printf("\n|----------------------------------------------|\n");
+    printf("\n| 1. View Reservation                          |\n");
+    printf("\n| 2. Add Reservation                           |\n");
+    printf("\n| 3. Update Reservation                        |\n");
+    printf("\n| 4. Search Reservation                        |\n");
+    printf("\n| 5. Cancel Reservation                        |\n");
+    printf("\n| 6. Return to Main Menu                       |\n");
+    printf("\n|----------------------------------------------|\n");
+}
+
+// Handles reservation management options
+void manageReservations(void)
+{
+    int submenuOption;
+
+    do
+    {
+        displayManageReservationsMenu();
+
+        printf("\nEnter Menu Option: ");
+        scanf("%d", &submenuOption);
+
+        switch (submenuOption)
+        {
+            case 1:
+                viewReservations();
+                break;
+
+            case 2:
+                addReservation();
+                break;
+
+            case 3:
+                updateReservation();
+                break;
+
+            case 4:
+                searchReservation();
+                break;
+
+            case 5:
+                deleteReservation();
+                break;
+
+            case 6:
+                return;
+
+            default:
+                printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
+        }
+
+    } while (1);
+}
+
 
 // Displays the main menu and handles user selections.
 void mainMenu(void)
@@ -209,70 +270,7 @@ void mainMenu(void)
     }
 }
 
-// Displays the manage reservations menu options.
-void displayManageReservationsMenu(void)
-{
-    printf("\n|----------------------------------------------|\n");
-    printf("\n|          Manage Reservations Menu            |\n");
-    printf("\n|----------------------------------------------|\n");
-    printf("\n| 1. View Reservation                          |\n");
-    printf("\n| 2. Add Reservation                           |\n");
-    printf("\n| 3. Update Reservation                        |\n");
-    printf("\n| 4. Search Reservation                        |\n");
-    printf("\n| 5. Cancel Reservation                        |\n");
-    printf("\n| 6. Return to Main Menu                       |\n");
-    printf("\n|----------------------------------------------|\n");
-}
 
-// Displays and manages the reservation menu options.
-void manageReservations(void)
-{
-    int submenuOption;
-
-    do
-    {
-        displayManageReservationsMenu();
-
-        printf("\nEnter Menu Option: ");
-        scanf("%d", &submenuOption);
-
-        switch (submenuOption)
-        {
-            case 1:
-                viewReservations();
-                break;
-
-            case 2:
-                addReservation();
-                break;
-
-            case 3:
-                updateReservation();
-                break;
-
-            case 4:
-                searchReservation();
-                break;
-
-            case 5:
-                deleteReservation();
-                break;
-
-            case 6:
-                return;
-
-            default:
-                printf("\nInvalid Menu Option. Please select a number between 1 and 6.\n");
-        }
-
-        if (returnToMainMenu)
-        {
-            returnToMainMenu = 0;
-            break;
-        }
-
-    } while (1);
-}
 
 // Reads guest information from the GuestInformation.txt file and stores the records in the guest array.
 void readGuestData(struct GuestInformation guests[], int *numberOfGuests)
