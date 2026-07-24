@@ -37,7 +37,7 @@
 #define MAX_NUMBER_OF_GUESTS 1000   // Maximum number of guest records allowed
 
 int numberOfGuests = 0;             // Current number of guests stored
-int numberOfEmployees;              // Number of employees stored
+int numberOfEmployees = 0;              // Number of employees stored
 int maxLoginAttempts = 3;            // Maximum login attempts allowed
 int loginAttempts = 0;               // Current login attempts
 int loggedIn = 0;                     // Login status (1 = logged in, 0 = logged out)
@@ -269,8 +269,6 @@ void mainMenu(void)
         }
     }
 }
-
-
 
 // Reads guest information from the GuestInformation.txt file and stores the records in the guest array.
 void readGuestData(struct GuestInformation guests[], int *numberOfGuests)
@@ -888,6 +886,9 @@ int main(void)
 {
     int menuOption;
     int durationOfStay;
+
+    // Calculates the number of employees stored in the employee array
+    numberOfEmployees = sizeof(employees) / sizeof(employees[0]);
 
     while (1)
     {
