@@ -1,0 +1,21 @@
+1 JohnDoe john@example.com 1234567890 123MainSt 3 21/02/2024 24/02/2024 Single 1 0 101 CreditCard XXXX-XXXX-XXXX-1234 Paid
+2 JaneSmith jane@example.com 9876543210 456ElmSt 5 10/03/2024 15/03/2024 Double 2 2 202 Cash N/A NotPaid
+3 MichaelJohnson michael@example.com 5551234567 789OakSt 2 05/04/2024 07/04/2024 Suite 2 1 305 DebitCard XXXX-XXXX-XXXX-5678 Paid
+4 EmilyBrown emily@example.com 1112223333 321PineSt 4 20/05/2024 24/05/2024 Single 1 0 102 Cash N/A NotPaid
+5 DavidLee david@example.com 9998887777 654MapleSt 3 15/06/2024 18/06/2024 Double 2 1 204 CreditCard XXXX-XXXX-XXXX-2468 Paid
+6 SarahWilson sarah@example.com 4445556666 987CedarSt 7 01/07/2024 08/07/2024 Suite 2 3 401 Cash N/A NotPaid
+7 MatthewTaylor matthew@example.com 7778889999 741BirchSt 2 12/08/2024 14/08/2024 Single 1 0 103 DebitCard XXXX-XXXX-XXXX-1357 Paid
+8 OliviaMartinez olivia@example.com 2223334444 852WalnutSt 3 05/09/2024 08/09/2024 Double 2 2 205 CreditCard XXXX-XXXX-XXXX-3579 Paid
+9 DanielRodriguez daniel@example.com 6667778888 963SpruceSt 4 20/10/2024 24/10/2024 Suite 2 1 302 Cash N/A NotPaid
+10 IsabellaHernandez isabella@example.com 3334445555 159FirSt 5 15/11/2024 20/11/2024 Single 1 0 104 CreditCard XXXX-XXXX-XXXX-4680 Paid
+11 JamesNguyen james@example.com 8889990000 258OakSt 2 01/12/2024 03/12/2024 Double 2 1 206 DebitCard XXXX-XXXX-XXXX-2468 Paid
+12 SophiaKim sophia@example.com 4447772222 357ElmSt 3 10/01/2025 13/01/2025 Suite 2 2 303 Cash N/A NotPaid
+13 AlexanderSmith alexander@example.com 7774441111 456PineSt 4 15/02/2025 19/02/2025 Single 1 0 105 CreditCard XXXX-XXXX-XXXX-1357 Paid
+14 MiaLee mia@example.com 1114447777 789CedarSt 2 01/03/2025 03/03/2025 Double 2 1 207 Cash N/A NotPaid
+15 EthanNguyen ethan@example.com 8881114444 987MapleSt 6 10/04/2025 16/04/2025 Suite 2 3 304 CreditCard XXXX-XXXX-XXXX-3579 Paid
+16 CharlotteBrown charlotte@example.com 2225558888 159BirchSt 3 20/05/2025 23/05/2025 Single 1 0 106 DebitCard XXXX-XXXX-XXXX-4680 Paid
+17 BenjaminMartinez benjamin@example.com 9992225555 258WalnutSt 4 15/06/2025 19/06/2025 Double 2 2 208 Cash N/A NotPaid
+18 AmeliaRodriguez amelia@example.com 4449992222 357SpruceSt 5 01/07/2025 06/07/2025 Suite 2 1 305 CreditCard XXXX-XXXX-XXXX-2468 Paid
+19 WilliamHernandez william@example.com 1116669999 456FirSt 2 12/08/2025 14/08/2025 Single 1 0 107 Cash N/A NotPaid
+20 LiamNguyen liam@example.com 8886663333 852OakSt 3 05/09/2025 08/09/2025 Double 2 1 209 CreditCard XXXX-XXXX-XXXX-3579 Paid
+
