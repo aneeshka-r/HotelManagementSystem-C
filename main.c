@@ -26,6 +26,8 @@
     Purpose:
     To improve C programming skills and practice software design,
     data structures, and file handling.
+
+    Author: Aneeshka C. Ramoutar
 */
 
 // Header files
