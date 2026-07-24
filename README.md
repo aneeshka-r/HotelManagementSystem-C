@@ -58,10 +58,3 @@ password1
 ## Project Status
 
 Completed
-
-## Future Improvements
-
-- Separate the program into multiple source and header files
-- Improve input validation
-- Add a graphical user interface
-- Add a database system for larger-scale data management
