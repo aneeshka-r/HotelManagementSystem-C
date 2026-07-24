@@ -21,8 +21,10 @@
 
     Rebuilt:
     Started: July 23, 2026
-    Purpose: To improve C programming skills and practice software
-    design, data structures, and file handling.
+
+    Purpose:
+    To improve C programming skills and practice software design,
+    data structures, and file handling.
 */
 
 // Header files
@@ -32,18 +34,19 @@
 #include <time.h>       // Allows the use of time and date functions
 
 // Global Variables
-#define MAX_NUMBER_OF_GUESTS 1000    // Maximum number of guests that can be stored in the system
+#define MAX_NUMBER_OF_GUESTS 1000   // Maximum number of guest records allowed
 
-int numberOfGuests = 0;              // Current number of guests stored in the system
-int returnToMainMenu = 0;            // Flag to control navigation to the main menu
-int numberOfEmployees = 0;           // Current number of employees stored in the system
-int maxLoginAttempts = 3;            // Maximum number of login attempts allowed
-int loginAttempts = 0;               // Current number of login attempts made by the user
-int loggedIn = 0;                    // Flag to indicate if a user is logged in (1 = logged in, 0 = not logged in)
-char username[20];                   // Stores the username entered during login
-char password[20];                   // Stores the password entered during login
+int numberOfGuests = 0;             // Current number of guests stored
+int numberOfEmployees;              // Number of employees stored
+int maxLoginAttempts = 3;            // Maximum login attempts allowed
+int loginAttempts = 0;               // Current login attempts
+int loggedIn = 0;                     // Login status (1 = logged in, 0 = logged out)
+int returnToMainMenu = 0;             // Controls returning to the main menu
 
-/* Structures */
+char username[20];                    // Stores entered username
+char password[20];                    // Stores entered password
+
+// Structures
 // Structure to store guest reservation and personal information
 struct GuestInformation
 {
@@ -74,14 +77,12 @@ struct GuestInformation
 // Creates an array to store multiple guest records
 struct GuestInformation guests[MAX_NUMBER_OF_GUESTS];
 
-
 // Structure to store employee login information
 struct Employee
 {
     char username[20];
     char password[20];
 };
-
 
 // Structure to store guest check-in information
 struct CheckInInformation
@@ -91,7 +92,6 @@ struct CheckInInformation
     char roomNumber[20];
     char checkInDate[20];
 };
-
 
 // Stores employee login credentials
 struct Employee employees[] =
@@ -108,7 +108,6 @@ struct Employee employees[] =
 int validateLogin(struct Employee employees[], int numberOfEmployees, char *username, char *password);
 void displayLoginScreen(void);
 void displayMainMenu(void);
-void mainMenu(void);
 void displayManageReservationsMenu(void);
 void manageReservations(void);
 void readGuestData(struct GuestInformation guests[], int *numberOfGuests);
