@@ -761,11 +761,11 @@ void guestCheckIn(void)
     }
 
     fprintf(file,
-            "Guest Name: %s, Room Number: %s, Reservation Number: %d, Check-in Date: %s\n",
-            searchName,
-            searchRoomNumber,
-            searchReservationNumber,
-            checkInDate);
+        "%s,%s,%d,%s\n",
+        searchName,
+        searchRoomNumber,
+        searchReservationNumber,
+        checkInDate);
 
     fclose(file);
 
@@ -836,26 +836,25 @@ void viewOccupiedRooms(void)
 
     if (file == NULL)
     {
-        printf("\nNo occupied rooms found.\n");
+        printf("No occupied rooms found.\n");
         return;
     }
 
     printf("\nOccupied Rooms:\n");
-    printf("------------------------------\n");
 
     struct CheckInInformation checkIn;
 
     while (fscanf(file,
-                  "%49s %19s %d %19s",
+                  "%49[^,],%19[^,],%d,%19[^\n]\n",
                   checkIn.name,
                   checkIn.roomNumber,
                   &checkIn.reservationNumber,
                   checkIn.checkInDate) == 4)
     {
-        printf("Guest Name: %s\n", checkIn.name);
+        printf("\nGuest Name: %s\n", checkIn.name);
         printf("Room Number: %s\n", checkIn.roomNumber);
         printf("Reservation Number: %d\n", checkIn.reservationNumber);
-        printf("Check-in Date: %s\n\n", checkIn.checkInDate);
+        printf("Check-in Date: %s\n", checkIn.checkInDate);
     }
 
     fclose(file);
